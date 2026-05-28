@@ -196,9 +196,11 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .mockup-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--accent-warm);
+  background: var(--ink-soft);
   flex-shrink: 0;
 }
+.mockup-dot.warm { background: var(--accent-warm); }
+.mockup-dot.cool { background: var(--accent-cool); }
 .mockup-title {
   font-family: var(--mono);
   font-size: var(--font-size-caption);
@@ -269,7 +271,11 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .mockup-frame.document .mockup-title { color: var(--ink); }
 .mockup-frame.document .mockup-bar { background: var(--gray-700); }
 .mockup-frame.document .mockup-bar.muted { background: var(--gray-300); opacity: 1; }
-.mockup-accent-stripe { display: block; height: var(--space-1); width: 40%; background: var(--accent-warm); border-radius: 2px; margin-bottom: var(--space-2); }
+.mockup-stripe { display: block; height: var(--space-1); width: 40%; background: var(--ink-soft); border-radius: 2px; margin-bottom: var(--space-2); }
+.mockup-stripe.warm { background: var(--accent-warm); }
+.mockup-stripe.cool { background: var(--accent-cool); }
+/* .mockup-accent-stripe — DEPRECATED v2.1, use .mockup-stripe.warm */
+.mockup-accent-stripe { display: block; height: var(--space-1); width: 40%; background: var(--ink-soft); border-radius: 2px; margin-bottom: var(--space-2); }
 
 /* Sketch: dashed border, outline-only content */
 .mockup-frame.sketch { background: var(--paper); border: 2px dashed var(--ink); }
@@ -291,8 +297,12 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .mockup-mini-chart { height: var(--space-8); display: flex; align-items: flex-end; gap: 3px; padding: var(--space-1) 0; }
 .mockup-mini-chart .mc-bar { flex: 1; background: var(--gray-700); border-radius: 1px; min-height: 4px; }
 .mockup-mini-chart .mc-bar.accent { background: var(--accent-warm); }
+.mockup-mini-chart .mc-bar.cool   { background: var(--accent-cool); }
 .mockup-mini-chart.line { display: block; position: relative; }
 .mockup-mini-chart.line svg { width: 100%; height: 100%; }
+.mockup-mini-chart.line svg path { stroke: var(--ink-soft); fill: none; }
+.mockup-mini-chart.line.accent svg path { stroke: var(--accent-warm); }
+.mockup-mini-chart.line.cool   svg path { stroke: var(--accent-cool); }
 
 /* Data-table: CSV/grid-of-rows */
 .mockup-frame.data-table { background: var(--paper); border: var(--border); padding: 0; }
@@ -311,8 +321,10 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 
 /* Arrow: connector with optional top + sub captions */
 .mockup-arrow { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); min-width: 100px; max-width: 160px; padding: 0 var(--space-2); }
-.mockup-arrow-caption { font-family: var(--mono); font-size: var(--font-size-caption); color: var(--accent-warm); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
-.mockup-arrow-line { display: block; width: 100%; text-align: center; color: var(--accent-warm); font-family: var(--mono); letter-spacing: 1px; }
+.mockup-arrow-caption { font-family: var(--mono); font-size: var(--font-size-caption); color: var(--ink-soft); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.mockup-arrow-caption.warm { color: var(--accent-warm); }
+.mockup-arrow-line { display: block; width: 100%; text-align: center; color: var(--ink-soft); font-family: var(--mono); letter-spacing: 1px; }
+.mockup-arrow-line.warm { color: var(--accent-warm); }
 .mockup-arrow-line::after { content: " →"; }
 .mockup-arrow-sub { font-family: var(--serif, var(--sans)); font-style: italic; color: var(--ink-soft); font-size: var(--font-size-caption); text-align: center; }
 
