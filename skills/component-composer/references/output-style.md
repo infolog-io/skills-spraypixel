@@ -332,14 +332,13 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .bg-warning { background: var(--warning); color: var(--ink); }
 .bg-danger  { background: var(--danger);  color: var(--paper); }
 
-/* Alert component — banner-style semantic feedback */
-.alert { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-panel); border-left: 4px solid currentColor; font-size: var(--font-size-body); }
-.alert.success { background: color-mix(in srgb, var(--success) 12%, var(--paper)); color: var(--success); }
-.alert.info    { background: color-mix(in srgb, var(--info)    12%, var(--paper)); color: var(--info); }
-.alert.warning { background: color-mix(in srgb, var(--warning) 12%, var(--paper)); color: var(--warning); }
-.alert.danger  { background: color-mix(in srgb, var(--danger)  12%, var(--paper)); color: var(--danger); }
-.alert > * { color: var(--ink); }
-.alert > .alert-icon { color: inherit; font-family: var(--mono); flex-shrink: 0; }
+/* Alert component — banner-style semantic feedback.
+   No border stripe, no icon chip. Intent is carried by tinted bg + dark-of-accent text. */
+.alert { display: block; padding: var(--space-3) var(--space-4); border-radius: var(--radius-panel); font-size: var(--font-size-body); margin-bottom: var(--space-2); }
+.alert.success { background: color-mix(in srgb, var(--success) 12%, var(--paper)); color: color-mix(in srgb, var(--success) 60%, var(--ink)); }
+.alert.info    { background: color-mix(in srgb, var(--info)    12%, var(--paper)); color: color-mix(in srgb, var(--info)    60%, var(--ink)); }
+.alert.warning { background: color-mix(in srgb, var(--warning) 12%, var(--paper)); color: color-mix(in srgb, var(--warning) 45%, var(--ink)); }
+.alert.danger  { background: color-mix(in srgb, var(--danger)  12%, var(--paper)); color: color-mix(in srgb, var(--danger)  60%, var(--ink)); }
 .mockup-mini-chart { height: var(--space-8); display: flex; align-items: flex-end; gap: 3px; padding: var(--space-1) 0; }
 .mockup-mini-chart .mc-bar { flex: 1; background: var(--gray-700); border-radius: 1px; min-height: 4px; }
 .mockup-mini-chart .mc-bar.accent  { background: var(--accent-warm); }
