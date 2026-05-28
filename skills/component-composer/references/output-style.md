@@ -86,6 +86,21 @@ Named fonts render on machines that have them installed; everyone else gets the 
 --gray-100 through --gray-900
 ```
 
+### Semantic communication colors (theme-defined, Foundation-declared)
+
+Four semantic tokens for UI feedback. Names are fixed across themes; values vary. Use these whenever a component needs to communicate intent (positive, informational, cautionary, dangerous). Default values below; themes may override.
+
+```css
+--success: #1a7d3b;   /* green  · positive state, OK, complete, live */
+--info:    #3D81B8;   /* blue   · neutral information, links, references */
+--warning: #E3B22F;   /* yellow · caution, pending, requires attention */
+--danger:  #c8553d;   /* red    · error, destructive action, critical */
+```
+
+Mapped to the existing slot system: `--accent-warm` defaults to `var(--success)`. Themes that want a different highlight can remap `--accent-warm` to any of the four semantic tokens (e.g., `--accent-warm: var(--danger)` for an error-themed view) or define a separate color.
+
+Components opt into semantics via class modifiers (see "Required CSS base" below): `.success`, `.info`, `.warning`, `.danger` apply to `.mockup-dot`, `.mockup-bar`, `.mockup-btn`, `.mockup-stat`, plus utility classes `.text-success`, `.bg-success` etc.
+
 ### Spacing scale
 
 ```css
@@ -199,8 +214,12 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
   background: var(--ink-soft);
   flex-shrink: 0;
 }
-.mockup-dot.warm { background: var(--accent-warm); }
-.mockup-dot.cool { background: var(--accent-cool); }
+.mockup-dot.warm    { background: var(--accent-warm); }
+.mockup-dot.cool    { background: var(--accent-cool); }
+.mockup-dot.success { background: var(--success); }
+.mockup-dot.info    { background: var(--info); }
+.mockup-dot.warning { background: var(--warning); }
+.mockup-dot.danger  { background: var(--danger); }
 .mockup-title {
   font-family: var(--mono);
   font-size: var(--font-size-caption);
@@ -290,14 +309,45 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .mockup-stat-label { font-family: var(--mono); font-size: 0.7em; color: var(--ink-soft); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
 .mockup-stat-value { font-family: var(--mono); font-size: 1.2em; font-weight: var(--weight-bold); color: var(--ink); }
 .mockup-stat-delta { font-family: var(--mono); font-size: 0.65em; color: var(--accent-cool); }
-.mockup-stat.warm  { background: color-mix(in srgb, var(--accent-warm) 15%, var(--paper-soft)); }
-.mockup-stat.warm .mockup-stat-value { color: var(--accent-warm); }
-.mockup-stat.cool  { background: color-mix(in srgb, var(--accent-cool) 15%, var(--paper-soft)); }
-.mockup-stat.cool .mockup-stat-value { color: var(--accent-cool); }
+.mockup-stat.warm    { background: color-mix(in srgb, var(--accent-warm) 15%, var(--paper-soft)); }
+.mockup-stat.warm    .mockup-stat-value { color: var(--accent-warm); }
+.mockup-stat.cool    { background: color-mix(in srgb, var(--accent-cool) 15%, var(--paper-soft)); }
+.mockup-stat.cool    .mockup-stat-value { color: var(--accent-cool); }
+.mockup-stat.success { background: color-mix(in srgb, var(--success) 15%, var(--paper-soft)); }
+.mockup-stat.success .mockup-stat-value { color: var(--success); }
+.mockup-stat.info    { background: color-mix(in srgb, var(--info)    15%, var(--paper-soft)); }
+.mockup-stat.info    .mockup-stat-value { color: var(--info); }
+.mockup-stat.warning { background: color-mix(in srgb, var(--warning) 15%, var(--paper-soft)); }
+.mockup-stat.warning .mockup-stat-value { color: var(--warning); }
+.mockup-stat.danger  { background: color-mix(in srgb, var(--danger)  15%, var(--paper-soft)); }
+.mockup-stat.danger  .mockup-stat-value { color: var(--danger); }
+
+/* Semantic utility classes — usable on any element */
+.text-success { color: var(--success); }
+.text-info    { color: var(--info); }
+.text-warning { color: var(--warning); }
+.text-danger  { color: var(--danger); }
+.bg-success { background: var(--success); color: var(--paper); }
+.bg-info    { background: var(--info);    color: var(--paper); }
+.bg-warning { background: var(--warning); color: var(--ink); }
+.bg-danger  { background: var(--danger);  color: var(--paper); }
+
+/* Alert component — banner-style semantic feedback */
+.alert { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-panel); border-left: 4px solid currentColor; font-size: var(--font-size-body); }
+.alert.success { background: color-mix(in srgb, var(--success) 12%, var(--paper)); color: var(--success); }
+.alert.info    { background: color-mix(in srgb, var(--info)    12%, var(--paper)); color: var(--info); }
+.alert.warning { background: color-mix(in srgb, var(--warning) 12%, var(--paper)); color: var(--warning); }
+.alert.danger  { background: color-mix(in srgb, var(--danger)  12%, var(--paper)); color: var(--danger); }
+.alert > * { color: var(--ink); }
+.alert > .alert-icon { color: inherit; font-family: var(--mono); flex-shrink: 0; }
 .mockup-mini-chart { height: var(--space-8); display: flex; align-items: flex-end; gap: 3px; padding: var(--space-1) 0; }
 .mockup-mini-chart .mc-bar { flex: 1; background: var(--gray-700); border-radius: 1px; min-height: 4px; }
-.mockup-mini-chart .mc-bar.accent { background: var(--accent-warm); }
-.mockup-mini-chart .mc-bar.cool   { background: var(--accent-cool); }
+.mockup-mini-chart .mc-bar.accent  { background: var(--accent-warm); }
+.mockup-mini-chart .mc-bar.cool    { background: var(--accent-cool); }
+.mockup-mini-chart .mc-bar.success { background: var(--success); }
+.mockup-mini-chart .mc-bar.info    { background: var(--info); }
+.mockup-mini-chart .mc-bar.warning { background: var(--warning); }
+.mockup-mini-chart .mc-bar.danger  { background: var(--danger); }
 .mockup-mini-chart.line { display: block; position: relative; }
 .mockup-mini-chart.line svg { width: 100%; height: 100%; }
 .mockup-mini-chart.line svg path { stroke: var(--ink-soft); fill: none; }

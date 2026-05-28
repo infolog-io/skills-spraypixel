@@ -55,10 +55,6 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
 
 ## Light mode palette (default)
 
-**CLOVER** (#1a7d3b) is the spraypixel signature highlight — deep emerald, considered, used for the primary accent across single-mark highlights and brand moments. Occupies the `--accent-warm` semantic slot.
-
-For **category differentiation** (3-4 series in a chart, axes that need distinct treatment), the palette also ships three brighter accent siblings at vermilion-level brightness: VERMILION, COBALT, MUSTARD. Use these when a chart needs to encode multiple categories with distinguishable hue. Otherwise, default to CLOVER alone (Tufte 90/10 rule).
-
 ```css
 :root {
   /* surfaces */
@@ -69,17 +65,15 @@ For **category differentiation** (3-4 series in a chart, axes that need distinct
   --ink:      #1a1a1a;
   --ink-soft: #555555;
 
-  /* brand — primary highlight */
-  --clover:       #1a7d3b;       /* hsl(140°, 66%, 30%) — spraypixel signature, deep emerald */
+  /* semantic communication colors — see output-style.md § "Semantic communication colors" */
+  --success: #1a7d3b;            /* hsl(140°, 66%, 30%) — green  · positive, OK, complete, live */
+  --info:    #3D81B8;            /* hsl(213°, 51%, 48%) — blue   · neutral information, links */
+  --warning: #E3B22F;            /* hsl(48°,  75%, 55%) — yellow · caution, pending */
+  --danger:  #c8553d;            /* hsl(11°,  55%, 51%) — red    · error, destructive */
 
-  /* category accents — bright, for 3-4 series differentiation */
-  --vermilion:    #c8553d;       /* hsl(11°,  55%, 51%) — Tufte original */
-  --cobalt:       #3D81B8;       /* hsl(213°, 51%, 48%) — bright cornflower */
-  --mustard:      #E3B22F;       /* hsl(48°,  75%, 55%) — golden yellow */
-
-  /* slot mapping */
-  --accent-warm:  var(--clover); /* CLOVER occupies the primary warm slot */
-  --accent-cool:  #2c5e6f;
+  /* generic accents — slot system; map to semantic where useful */
+  --accent-warm:  var(--success); /* primary highlight defaults to success-green for this theme */
+  --accent-cool:  var(--info);    /* references / thresholds default to info-blue */
   --accent-quiet: #888888;
 
   /* gray ramp */
@@ -101,9 +95,12 @@ For **category differentiation** (3-4 series in a chart, axes that need distinct
   --ink:      #f5f1e9;
   --ink-soft: #a8a39b;
 
-  --clover:       #00C800;       /* CLOVER, brightened for dark-bg legibility */
-  --accent-warm:  var(--clover);
-  --accent-cool:  #5fa3b7;
+  --success: #2dc762;             /* brightened green for dark-bg legibility */
+  --info:    #5fa3d4;             /* brightened blue */
+  --warning: #ebc14d;             /* brightened yellow */
+  --danger:  #d97757;             /* brightened red */
+  --accent-warm:  var(--success);
+  --accent-cool:  var(--info);
   --accent-quiet: #6b6b6b;
 
   --gray-100: #2a2724;
@@ -119,9 +116,12 @@ For **category differentiation** (3-4 series in a chart, axes that need distinct
     --paper-soft: #1f1c1a;
     --ink:        #f5f1e9;
     --ink-soft:   #a8a39b;
-    --clover:       #00C800;
-    --accent-warm:  var(--clover);
-    --accent-cool:  #5fa3b7;
+    --success: #2dc762;
+    --info:    #5fa3d4;
+    --warning: #ebc14d;
+    --danger:  #d97757;
+    --accent-warm:  var(--success);
+    --accent-cool:  var(--info);
     --accent-quiet: #6b6b6b;
     --gray-100: #2a2724;
     --gray-300: #3d3a35;
