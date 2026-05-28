@@ -55,7 +55,9 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
 
 ## Light mode palette (default)
 
-CLOVER (#008F00) is the spraypixel signature highlight. Vivid pure green, signal-bright, software-feeling. Occupies the `--accent-warm` semantic slot (the slot name is positional, not literal-hue).
+**CLOVER** (#1a7d3b) is the spraypixel signature highlight — deep emerald, considered, used for the primary accent across single-mark highlights and brand moments. Occupies the `--accent-warm` semantic slot.
+
+For **category differentiation** (3-4 series in a chart, axes that need distinct treatment), the palette also ships three brighter accent siblings at vermilion-level brightness: VERMILION, COBALT, MUSTARD. Use these when a chart needs to encode multiple categories with distinguishable hue. Otherwise, default to CLOVER alone (Tufte 90/10 rule).
 
 ```css
 :root {
@@ -67,11 +69,16 @@ CLOVER (#008F00) is the spraypixel signature highlight. Vivid pure green, signal
   --ink:      #1a1a1a;
   --ink-soft: #555555;
 
-  /* brand */
-  --clover:       #008F00;       /* spraypixel signature — vivid green */
+  /* brand — primary highlight */
+  --clover:       #1a7d3b;       /* hsl(140°, 66%, 30%) — spraypixel signature, deep emerald */
 
-  /* accents — 90/10 rule */
-  --accent-warm:  var(--clover); /* CLOVER occupies the warm slot */
+  /* category accents — bright, for 3-4 series differentiation */
+  --vermilion:    #c8553d;       /* hsl(11°,  55%, 51%) — Tufte original */
+  --cobalt:       #3D81B8;       /* hsl(213°, 51%, 48%) — bright cornflower */
+  --mustard:      #E3B22F;       /* hsl(48°,  75%, 55%) — golden yellow */
+
+  /* slot mapping */
+  --accent-warm:  var(--clover); /* CLOVER occupies the primary warm slot */
   --accent-cool:  #2c5e6f;
   --accent-quiet: #888888;
 
