@@ -55,6 +55,8 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
 
 ## Light mode palette (default)
 
+CLOVER (#008F00) is the spraypixel signature highlight. Vivid pure green, signal-bright, software-feeling. Occupies the `--accent-warm` semantic slot (the slot name is positional, not literal-hue).
+
 ```css
 :root {
   /* surfaces */
@@ -65,8 +67,11 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
   --ink:      #1a1a1a;
   --ink-soft: #555555;
 
+  /* brand */
+  --clover:       #008F00;       /* spraypixel signature — vivid green */
+
   /* accents — 90/10 rule */
-  --accent-warm:  #c8553d;   /* Okabe-Ito vermillion, adapted */
+  --accent-warm:  var(--clover); /* CLOVER occupies the warm slot */
   --accent-cool:  #2c5e6f;
   --accent-quiet: #888888;
 
@@ -89,7 +94,8 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
   --ink:      #f5f1e9;
   --ink-soft: #a8a39b;
 
-  --accent-warm:  #d97757;   /* lighter vermillion for dark bg legibility */
+  --clover:       #00C800;       /* CLOVER, brightened for dark-bg legibility */
+  --accent-warm:  var(--clover);
   --accent-cool:  #5fa3b7;
   --accent-quiet: #6b6b6b;
 
@@ -106,7 +112,8 @@ Perfect 5th heading scale + 16/14 body floor. See `output-style.md` § "Type sca
     --paper-soft: #1f1c1a;
     --ink:        #f5f1e9;
     --ink-soft:   #a8a39b;
-    --accent-warm:  #d97757;
+    --clover:       #00C800;
+    --accent-warm:  var(--clover);
     --accent-cool:  #5fa3b7;
     --accent-quiet: #6b6b6b;
     --gray-100: #2a2724;
