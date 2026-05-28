@@ -161,6 +161,101 @@ time  { font-family: var(--mono); font-feature-settings: var(--features-tabular)
 .delta-down  { color: var(--accent-warm); }
 .id { font-family: var(--mono); font-size: 0.92em; color: var(--ink-soft); font-feature-settings: var(--features-no-ligatures); }
 
+/* Mockup primitive — HTML/CSS mock-UI card for showing before/after, screenshots, variants, previews.
+   Use when you want to illustrate a UI without embedding an actual image. Pure CSS placeholders. */
+.mockup {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.mockup-label {
+  font-family: var(--mono);
+  font-size: var(--font-size-caption);
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+.mockup-frame {
+  position: relative;
+  background: var(--gray-900);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.mockup-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+.mockup-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  flex-shrink: 0;
+}
+.mockup-title {
+  font-family: var(--mono);
+  font-size: var(--font-size-caption);
+  color: var(--paper);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+.mockup-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.mockup-bar {
+  height: 8px;
+  width: 60%;
+  background: var(--gray-700);
+  border-radius: 2px;
+}
+.mockup-bar.wide   { width: 100%; }
+.mockup-bar.narrow { width: 30%; }
+.mockup-bar.muted  { background: var(--gray-500); opacity: 0.5; }
+.mockup-bar.accent { background: var(--accent-warm); }
+.mockup-bar.tall   { height: var(--space-6); }
+.mockup-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.mockup-btn {
+  font-family: var(--sans);
+  font-size: var(--font-size-caption);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: default;
+}
+.mockup-btn.primary { background: var(--accent-warm); color: var(--paper); }
+.mockup-btn.ghost   { background: transparent; color: var(--paper); border-color: var(--gray-500); }
+.mockup-cursor {
+  position: absolute;
+  width: 14px; height: 14px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+}
+.mockup-cursor::before {
+  content: "";
+  display: block;
+  width: 0; height: 0;
+  border-left: 8px solid var(--paper);
+  border-top: 5px solid transparent;
+  border-bottom: 9px solid transparent;
+  transform: rotate(-30deg);
+}
+.mockup-cursor.bottom-left { left: var(--space-4); bottom: var(--space-4); }
+.mockup-cursor.center      { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
 /* Column grid */
 .grid {
   display: grid;
@@ -314,6 +409,7 @@ Themes may add more, but the drafter always uses these structural classes:
 - `.annotation` — callouts and notes
 - `.axis`, `.tick`, `.tick-label`, `.data-mark` — SVG chart parts
 - `.metric`, `.unit`, `.delta`, `.delta-up`, `.delta-down`, `.id` — semantic data callouts
+- `.mockup`, `.mockup-label`, `.mockup-frame`, `.mockup-chrome`, `.mockup-dot`, `.mockup-title`, `.mockup-body`, `.mockup-bar` (+ `.wide`/`.narrow`/`.muted`/`.accent`/`.tall`), `.mockup-row`, `.mockup-btn` (+ `.primary`/`.ghost`), `.mockup-cursor` (+ `.bottom-left`/`.center`) — mock-UI cards for before/after, variants, previews
 - `.theme-switch` — mode switch (required)
 
 `.page` is deprecated — use a `.grid` with `.span-full` children instead.
